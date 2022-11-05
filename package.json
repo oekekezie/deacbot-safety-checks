@@ -1,0 +1,12 @@
+{
+  "name": "deacbot-safety-checks",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "fast-csv": "^4.3.6"
+  }
+}
