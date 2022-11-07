@@ -130,7 +130,9 @@ function formatObsInterval(obsInterval) {
 // TODO: Documentation
 // Validate safety checks observation
 function isValidSafetyCheckObservation(obs) {
-    return LIST_OF_SAFETY_CHECKS_OBS[String(obs).toUpperCase()] ? true : false;
+    // return LIST_OF_SAFETY_CHECKS_OBS[String(obs).toUpperCase()] ? true : false;
+    // FIXME: Must return true to account for OCR errors
+    return true;
 }
 
 // TODO: Documentation

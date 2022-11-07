@@ -9,7 +9,7 @@ POST https://88db-134-195-204-20.ngrok.io/api/storeSafetyChecksAsCSV HTTP/1.1
 Content-Type: application/json
 
 ### Test deployed
-POST https://deacbotstoresafetychecksascsv.azurewebsites.net/api/storesafetychecksascsv HTTP/1.1
+POST https://deacbotfunctionappdevtest.azurewebsites.net/api/storesafetychecksascsv HTTP/1.1
 Content-Type: application/json
 
 < ./../test data/15 min safety checks analyze result.json

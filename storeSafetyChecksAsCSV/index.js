@@ -6,6 +6,9 @@ const { writeSafetyChecksToCSV } = require("./../libs/safety checks to csv");
 
 module.exports = async function (context, req) {
     try {
+        // Monitoring
+        // context.log(`POST request for ${context.invocationId}: ${JSON.stringify(req)}`);
+        
         // Get analyzeResult
         const analyzeResult = req.body.analyzeResult;
         if (!analyzeResult) throw new Error ("No 'analyzeResult' was included.")
@@ -24,7 +27,8 @@ module.exports = async function (context, req) {
             body: csv
         };
     } catch (error) {
-        console.log(error);
+        context.log.error(error);
+        
         context.res = {
             status: 500,
             body: error
