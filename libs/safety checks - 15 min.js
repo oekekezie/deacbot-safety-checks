@@ -167,6 +167,7 @@ function _createObservation(cell, date, shiftType, obsInterval, patientLookup, t
 
 function _formatObservationStatus(cell) {
     const content = cleanCellContent(cell.content) || "_"; // handle blank cells
+    // FIXME: Should probably get rid of this validation step?
     if (!isValidSafetyCheckObservation(content)) throw new Error(`Safety checks observation status "${content}" at cell ${cell.columnIndex}x${cell.rowIndex} not supported`);
     
     return {
