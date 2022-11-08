@@ -21,7 +21,7 @@ const EXPECTED_TABLE_NUM_COLUMNS = 35;
 const FIRST_TIME_LABEL_CELL_INDEX = 3;
 
 // Bounds of safety checks observations for patients
-const FIRST_OBS_ROW = 2;
+const FIRST_OBS_ROW = 1;
 const FIRST_OBS_COLUMN = 3;
 
 // TODO: Likely should have a function to get checks for one patient and another to get checks for all patients using said function
@@ -135,7 +135,6 @@ function _getListOfTimeLabels(table) {
     return timeLabels;
 }
 
-// FIXME: Why is there no confidence?
 function _createObservation(cell, date, shiftType, obsInterval, patientLookup, timeLabelLookup, confidenceScoreLookup, _index = -1) {
     let obs = {
         _index, // original cell index
@@ -167,9 +166,6 @@ function _createObservation(cell, date, shiftType, obsInterval, patientLookup, t
 
 function _formatObservationStatus(cell) {
     const content = cleanCellContent(cell.content) || "_"; // handle blank cells
-    // FIXME: Should probably get rid of this validation step?
-    if (!isValidSafetyCheckObservation(content)) throw new Error(`Safety checks observation status "${content}" at cell ${cell.columnIndex}x${cell.rowIndex} not supported`);
-    
     return {
         status: String(content).toUpperCase()
     };
