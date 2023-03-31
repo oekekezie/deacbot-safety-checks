@@ -115,7 +115,7 @@ function formatShiftDate(shiftDate) {
     const date = new Date(dateComponents[1].trim() + ", " + dateComponents[2].trim());
     
     // Format date as YYYY-MM-DD
-    return `${date.getFullYear() + 1}-${date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1}-${date.getDate() + 1 < 10 ? `0${date.getDate() + 1}` : date.getDate() + 1}`
+    return `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1}-${date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()}`
 }
 
 // TODO: Documentation
@@ -130,8 +130,8 @@ function formatObsInterval(obsInterval) {
 // TODO: Documentation
 function cleanCellContent(content) {
     if (!content instanceof String) throw new Error("Expecting content to be a string");
-    // Replace all new line characters
-    return String(content).replaceAll(/[\r\n]/gm, ' ').split(" ")[0];
+    // Remove all new line characters and un/selected checkboxes
+    return String(content).toUpperCase().replaceAll(/[\r\n]/gm, ' ').replaceAll(":SELECTED:", '').replaceAll(":UNSELECTED:", '').split(" ")[0];
 }
 
 module.exports = {
